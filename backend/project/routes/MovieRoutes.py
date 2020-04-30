@@ -12,6 +12,7 @@ def index():
 @bpMovie.route('/', methods=['POST'])
 def post():
     print(request.data)
+    #https://stackoverflow.com/questions/10434599/get-the-data-received-in-a-flask-request
     return "ok"
 
 @bpMovie.route('/', methods=['UPDATE'])
