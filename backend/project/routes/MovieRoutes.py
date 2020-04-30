@@ -1,4 +1,4 @@
-from flask import  Blueprint, jsonify, request, json
+from flask import  Blueprint, jsonify, request, json, request, abort
 
 from project import db
 from project.models.MovieModel import MovieModel
@@ -6,19 +6,13 @@ from project.models.MovieModel import MovieModel
 bpMovie = Blueprint('movie', __name__)
 
 @bpMovie.route('/', methods=['GET'])
-def index():
-    #obj = MovieModel(titleOriginal='The Lord of the Rings', titlePtbr='O Senhor dos Anéis',year=2001)    
-    #db.session.add(obj)
-    #db.session.commit()
-
-    
-    v = MovieModel.get_delete_put_post()
-    print(v)
-    return v
+def index():    
+    return MovieModel.get_delete_put_post()
 
 @bpMovie.route('/', methods=['POST'])
 def post():
-    return jsonify({"message":"ola"})    
+    print(request.data)
+    return "ok"
 
 @bpMovie.route('/', methods=['UPDATE'])
 def update():
